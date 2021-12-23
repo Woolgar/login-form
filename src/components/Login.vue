@@ -1,17 +1,17 @@
 <template>
-  <div class="container-fluid login-page">
-    <div class="row px-0">
-      <div class="col-xs-12 col-md-4 col-lg-4">
+  <div class="container-fluid login-page min-vh-100">
+    <div class="row px-0 d-flex flex-row min-vh-100">
+      <div
+        class="col-xs-12 col-md-4 d-flex flex-column col-lg-4 align-items-center align-self-center"
+      >
         <img class="logo" alt="logo" src="../assets/logo-white.svg" />
         <form>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
+            <label for="Email" class="form-label">Email address</label>
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
+              id="Email1"
               aria-describedby="emailHelp"
               placeholder="Enter your e-mail"
             />
@@ -35,7 +35,7 @@
           </div>
           <div>
             <button type="submit" class="btn btn-block btn-lg btn-primary">
-              Submit
+              Sign in
             </button>
           </div>
         </form>
@@ -58,11 +58,22 @@ export default {};
 <style scoped>
 .login-page {
   background-color: #0f2640;
-  height: 100%;
+  height: auto;
   width: auto;
 }
 .logo {
   width: 100px;
   height: 100px;
+}
+.btn-block {
+  width: 100%;
+}
+label {
+  text-align: left;
+}
+img {
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
 }
 </style>
