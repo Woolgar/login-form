@@ -4,8 +4,8 @@
       <div
         class="col-xs-12 col-md-4 d-flex flex-column col-lg-4 align-items-center align-self-center"
       >
-        <img class="logo" alt="logo" src="../assets/logo-white.svg" />
-        <form>
+        <img class="logo mb-5" alt="logo" src="../assets/logo-white.svg" />
+        <form v-on:submit.prevent="onSubmit">
           <div class="mb-3">
             <label for="Email" class="form-label">Email address</label>
             <input
@@ -17,32 +17,43 @@
             />
             <div id="emailHelp" class="form-text"></div>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Password</label
-            >
-            <div class="input-group">
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="enter your password"
-              />
-              <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2">@</span>
-              </div>
+          <label for="password" class="form-label">Password</label>
+
+          <div class="mb-3 input-group">
+            <input
+              v-if="showPassword"
+              type="text"
+              class="form-control"
+              v-model="password"
+            />
+            <input
+              v-else
+              type="password"
+              class="form-control"
+              v-model="password"
+            />
+            <div class="input-group-append">
+              <button class="button form-control" @click="toggleShow">
+                <span class="icon is-small is-right">
+                  <i
+                    class="fas"
+                    :class="{
+                      'fa-eye-slash': showPassword,
+                      'fa-eye': !showPassword,
+                    }"
+                  ></i>
+                </span>
+              </button>
             </div>
           </div>
           <div>
-            <button type="submit" class="btn btn-block btn-lg btn-primary">
-              Sign in
-            </button>
+            <button class="btn btn-block btn-lg btn-primary">Sign in</button>
           </div>
         </form>
       </div>
-      <div class="col px-0">
+      <div class="col px-0 img-container">
         <img
-          class="img-fluid"
+          class="img-gallery img-fluid"
           src="../assets/images/laura-nyhuis-0P_pT8ZQKd8-unsplash.jpg"
           alt=""
         />
@@ -52,10 +63,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      showPassword: false,
+      password: null,
+    };
+  },
+  computed: {
+    buttonLabel() {
+      return this.showPassword ? "Hide" : "Show";
+    },
+  },
+  methods: {
+    toggleShow() {
+      this.showPassword = !this.showPassword;
+    },
+  },
+};
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
 .login-page {
   background-color: #0f2640;
   height: auto;
@@ -69,11 +100,25 @@ export default {};
   width: 100%;
 }
 label {
-  text-align: left;
+  display: flex;
+  color: #fff;
 }
-img {
+.img-container {
+  overflow: hidden;
+}
+.img-gallery {
   height: 100%;
   overflow: hidden;
   object-fit: cover;
+  animation: zoomin 10s infinite;
+}
+
+@keyframes zoomin {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
 }
 </style>
