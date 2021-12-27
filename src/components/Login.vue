@@ -115,6 +115,9 @@ input {
   border-radius: 0px 10px 10px 0;
   padding-top: 10px;
 }
+.button:focus {
+  box-shadow: none;
+}
 .pw-group {
   justify-content: space-between;
 }
