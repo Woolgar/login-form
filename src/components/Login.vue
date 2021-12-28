@@ -29,12 +29,14 @@
                 type="text"
                 class="form-control"
                 v-model="password"
+                placeholder="Enter your password"
               />
               <input
                 v-else
                 type="password"
                 class="form-control"
                 v-model="password"
+                placeholder="Enter your password"
               />
               <div class="input-group-append">
                 <button class="button form-control" @click="toggleShow">
@@ -123,6 +125,7 @@ input {
 }
 .pw-group span {
   color: #a2b5cd;
+  cursor: pointer;
 }
 label {
   display: flex;
@@ -130,5 +133,8 @@ label {
 }
 .img-container {
   overflow: hidden;
+}
+.btn:focus {
+  box-shadow: none;
 }
 </style>
