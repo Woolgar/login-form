@@ -4,7 +4,7 @@
       <div
         class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 d-flex flex-column col-lg-4 align-items-center align-self-center"
       >
-        <div class="col-8">
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-8">
           <img class="logo mb-5" alt="logo" src="../assets/logo-white.svg" />
           <form v-on:submit.prevent="onSubmit">
             <div class="mb-3">
