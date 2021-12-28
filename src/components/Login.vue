@@ -96,6 +96,7 @@ export default {
   background-color: #0f2640;
   height: auto;
   width: auto;
+  transition: all 0.3s;
 }
 .logo {
   width: 100px;
