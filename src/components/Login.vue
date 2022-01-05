@@ -59,22 +59,52 @@
         </div>
       </div>
       <div class="d-none col d-lg-inline-flex d-flex px-0 img-container">
-        <SlideShow></SlideShow>
+        <!-- <SlideShow></SlideShow> -->
+        <Carousel
+          :navigation="false"
+          :pagination="false"
+          :enableAutoPlay="true"
+          :interval="15000"
+          class="carousel"
+          v-slot="{ currentSlide }"
+        >
+          <Slide v-for="(slide, index) in carouselSlides" :key="index">
+            <div v-show="currentSlide === index + 1" class="slide-info">
+              <img
+                class="slide-img"
+                :src="require(`../assets/images/${slide}.jpg`)"
+                alt=""
+              />
+            </div>
+          </Slide>
+        </Carousel>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SlideShow from "./SlideShow.vue";
+// import SlideShow from "./SlideShow.vue";
+import Carousel from "./Carousel.vue";
+import Slide from "./Slide.vue";
 export default {
-  components: { SlideShow },
+  components: { Slide, Carousel },
+  setup() {
+    const carouselSlides = [
+      "fatih-kilic",
+      "krists-luhaers",
+      "laura-nyhuis",
+      "michael-maasen",
+    ];
+    return { carouselSlides };
+  },
   data() {
     return {
       showPassword: false,
       password: null,
     };
   },
+
   computed: {
     buttonLabel() {
       return this.showPassword ? "Hide" : "Show";
@@ -92,6 +122,27 @@ export default {
 * {
   box-sizing: border-box;
 }
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+}
+
+.slide-img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .login-page {
   background-color: #0f2640;
   height: auto;
