@@ -59,7 +59,6 @@
         </div>
       </div>
       <div class="d-none col d-lg-inline-flex d-flex px-0 img-container">
-        <!-- <SlideShow></SlideShow> -->
         <Carousel
           :navigation="false"
           :pagination="false"
@@ -84,7 +83,6 @@
 </template>
 
 <script>
-// import SlideShow from "./SlideShow.vue";
 import Carousel from "./Carousel.vue";
 import Slide from "./Slide.vue";
 export default {
